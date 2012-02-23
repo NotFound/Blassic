@@ -1,0 +1,570 @@
+Version 0.10.1
+
+	Added msx option and charset.
+
+Version 0.10.0
+
+	Improved configure, easier and with more options.
+
+	New system var to control if blank lines are converted
+	to comments when loading a program in text mode, and
+	command line option --comblank to set it.
+
+	Now the graphics system is not initialized until a
+	graphics mode is established. Under X the X server
+	can be established or changed on the fly by channging
+	the value of the DISPLAY environment variable.
+
+	String slicing operations ZX Basic style using [ ].
+
+	Added SCROLL, ZX_PLOT and ZX_UNPLOT instructions.
+
+	Additional optional parameters for COPYCHR$.
+
+	Characters redefinition Spectrum style now extends
+	to Z.
+
+	LABEL can be used as function, giving the line number
+	where the label is defined. Useful with 'IF ERL = ...',
+	for example.
+
+	RENUM takes another optional argument, to stop
+	renumbering at certain line.
+
+	Changed default charset, added charsets spectrum and
+	cpc, selected when used the corresponding command
+	line option and with a new syntax for SYMBOL AFTER.
+
+	RETURN now admits an optional line number argument.
+
+	FN RETURN instruction added.
+
+	POPEN now can be bidirectional and capture the error
+	output. This feature may or not works well in windows,
+	depending on the windows versions, more work in this
+	is needed.
+
+	CHAIN MERGE now does not affect the current program
+	if the loading of the chained fails.
+
+	Line number 0 is now valid (and you can even ON ERROR GOTO
+	to it, but only with a LABEL).
+
+	New machine type command line option --appleII
+
+	New operator \ for integer division.
+
+	New system flags to control if true value is -1 or 1
+	and if the logical operators are binary or boolean.
+
+	GO TO and GO SUB are now accepted. They can be listed
+	as two words using a new system flag. <= and others
+	also are accepted with embedded spaces.
+
+	New system flag to allow GOTO and other jump instructions
+	refer to a line number inexistent, using the next line in
+	that case.
+
+	New command line options --errout, --norun, --tron and
+	--tronline.
+
+	Processing of command line options reworked. Now a option
+	inexistent is not taken as a filename, generates an error
+	instead.
+
+	Better LABEL caching and error detection.
+
+	Now can be compiled without graphics in platforms where
+	they are supported just by commenting the line
+		#define BLASSIC_HAS_GRAPHICS
+	in graphics.cpp
+
+	Added flag in system vars to control if debug info is showed
+	on certain errors, and --info command line option to turn
+	it on. More debug info added to be used with this.
+
+	Added UCASE$ and LCASE$ aliases for UPPER$ and LOWER$.
+
+	Added GET and PUT graphic variants.
+
+	Corrected bug of LINE ... B in windows.
+
+	Added function ALLOC_MEMORY and instruction FREE_MEMORY,
+	this allows use of machine code in operating systems with
+	protection against execution in data areas.
+
+	Regular expression functions (currently not working under
+	windows).
+
+	INSTR with initial value less than 1 now gives error.
+
+	Corrected READ: now a comma at the end of a DATA sentence
+	is valid.
+
+	EOF now works with random files. Also added the LOC function
+	for him.
+
+
+Version 0.8.1
+
+	-p command line option to print expressions.
+
+	- in command line means read program from standard input.
+
+	Suffix # for floating point variables is now accepted.
+
+Version 0.8.0
+
+	THEN omitted and flag that controls if it's accepetd.
+
+	Flags to insert space before non negative numbers in PRINT
+	and in STR$, and to convert LF to CR in GET a$ and INKEY$.
+
+	LOF, FREEFILE, INKEY and ROUND functions added.
+
+	LSET and RSET corrected, and now works with standalone vars.
+
+	FIELD now assign the field variables, and accepts matrix
+	elements.
+
+	END now closes files.
+
+	=> , =< and >< added.
+
+	PULL instruction and his variants added.
+
+	MID$ instruction now accepts subindexed variables and works
+	with fields.
+
+	Command line options --gwbasic, --allflags and --lfcr added.
+
+	CLOSE without parameters, CLEAR and others now does not close
+	window channels.
+
+	WIDTH LPRINT now accepts a second parameter for setting left
+	margin.
+
+	Graphics modes can be rotated, with system var and command
+	line option --rotate.
+
+	ZONE now works in text mode.
+
+	The end of command line options is marked with --.
+
+	FIELD CLEAR and FIELD APPEND instructions.
+
+	Text input in graphics mode now uses accent dead keys.
+
+	**BREAK** when launched program from command line now goes
+	to standard error.
+
+	Automatic conversions from floating point to integer now
+	are rounded and can result in overflow error.
+
+	PAINT instruction.
+
+	Now compiles again when no graphics library found.
+
+	Functions to convert to and from MBF format (floating point
+	format used in several Basic): MKSMBF$, MKDMBF$, CVSMBF and
+	CVDMBF.
+
+Version 0.7.2
+
+	ASC now does not require parenthesis.
+
+	SCREEN$ function.
+
+	--cpc and --spectrum command line options.
+
+	Command line option -m now accepts mode by name.
+
+	BRIGHT instruction and PRINT modifier.
+
+	Added BINARY to open modes for files.
+
+	Spectrum syntax for CIRCLE is now accepted.
+
+	DRAWARC instruction.
+
+Version 0.7.1
+
+	POPEN in unix versions now redirects the standard streams
+	to /dev/null.
+
+	FILES to printer channel now uses correct line width.
+
+	"Sin soporte de graficos" and some other messages still in
+	spanish are translated.
+
+	Moving in the history buffer now places the cursor at the end
+	of line.
+
+	New flag in Flags1 system variable controls TAB style.
+
+	INKEY$ now accepts a channel parameter and can be used with files.
+
+	Avoided high use of CPU on unix when waiting a key in graphics mode.
+
+	PAUSE 0 now does a usleep (0) on unix.
+
+	Implemented the effect of the ; initial in INPUT and LINE INPUT
+	(previously was accepted but does nothing).
+
+	Functions found on Sinclair Basics (and some other funtions) now
+	does not require parenthesis (USR only when used whith UDG).
+
+	VAL$ function.
+
+Version 0.7.0
+
+	USR "Spectrum graphic characters style".
+
+	Corrected bug with APPEND mode.
+
+	Printer support with LPRINT and LLIST.
+
+	WIDTH LPRINT instruction.
+
+	ZONE implemented at least!
+
+	Solved problems with popen under Windows (I hope).
+
+Version 0.6.1
+
+	MODE 0 when graphics not available now is not an error.
+
+	Added underline mode to console emulation in graphics mode.
+
+	Bug RESTORE always set line 0 corrected.
+
+	Bug ' after DATA corrected.
+
+	Bug vars whith suffix ! corrected.
+
+	IF_DEBUG instruction, DebugLevel system var, --debug command
+	line option.
+
+Version 0.6.0
+
+	Corrected an obscure bug in windows.
+
+	FILES now gives error when file not found and has an optional
+	channel parameter.
+
+	Problem with popen as direct command in windows solved in
+	windows 98, but now does not work on XP. Compiling with
+	MinGW the problem dissapears. Borland's fault?
+
+	FN recursion level limited, controled by a new system var.
+
+	Instructions TAG, TAGOFF, ORIGIN, DEG, RAD and INVERSE.
+
+	Crash when copychr out of screen corrected.
+
+	Delete key in graphics mode in linux/unix now acts as Delete.
+
+	Now compiles under Cygwin and under MinGW. Can be compiled on
+	unix with curses instead of ncurses or without any curses.
+
+	USING corrected, now does not require the ecvt function,
+	that is not provided in all platforms.
+
+	New system var Flags1, bit 0 control LOCATE style
+	Microsoft (row, col) or Amstrad CPC (col, row).
+
+	Graphic window on Windows can be minimized.
+
+	New graphics modes pcw, pcw2, cpc0 and cpc1, mode cpc2 corrected.
+
+	MODE has new optional arguments zoomx and zoomy.
+
+	Control characters in graphics mode now acts like both Amstrad
+	CPC in Basic and Amstrad CPC and PCW in CP/M.
+
+	Line feed now has no automatic CR in graphics mode.
+
+	CLEAR and similars now does a RESTORE.
+
+	Separators between PRINT items are no longer required.
+
+	INK Spectrum syntax is now accepeted.
+
+	INK, PAPER and INVERSE as PRINT specifiers Spectrum style.
+
+	Bug local integer variables incorrectly restored, solved
+
+	Workaround for a possible compiler error on arm.
+
+Version 0.5.7
+
+	cursor.cpp not compiled under gcc 2.95, corrected.
+
+	Bug MODE segfaulting in console, corrected.
+
+	Some READ improvement.
+
+	STRERR$ function.
+
+	CLEAR INK instruction.
+
+	DEC$ function.
+
+	PRINT USING improved, now with scientific notation and
+	currency sign for dollar, pound and euro.
+
+	Bug editing chars with code > 127 ignored, corrected.
+
+	POS and VPOS functions.
+
+	Line editing in INPUT and LINE INPUT now also works in
+	text mode in unix.
+
+	TAB now works correctly in text mode.
+
+	Speed improvement in text output in graphics mode.
+
+	INPUT corrected, LINE INPUT improved.
+
+	CLEAR INPUT instruction.
+
+	Better handling of multiline FN functions.
+
+	GOTO (and others) to a line number that not exist now
+	is an error.
+
+	SET_TITLE instruction.
+
+Version 0.5.6
+
+	Instructions BEEP, DEFINT, DEFSTR, DEFREAL, DEFSNG and DEFDBL.
+
+	RESUME without error is an error even with line number.
+
+	Function COPYCHR$.
+
+	Instruction WINDOW SWAP.
+
+	Functions TEST and TESTR.
+
+	Instruction INK.
+
+	Solved problem when running from telnet in hp-ux.
+
+Version 0.5.5
+
+	SINH, COSH, TANH, ASINH, ACOSH and ATANH functions.
+
+	Better handling of math errors.
+
+	ATAN2 function.
+
+	Command history.
+
+	Behaviour of RUN, CLEAR and NEW corrected.
+
+	Bug MODE not destroyed the window channels, corrected.
+
+	FINDFIRST$ and FINDNEXT$ functions.
+
+Version 0.5.4
+
+	Command line option -x to exclude keywords.
+
+	#include directive in text programs.
+
+	Functions RINSTR, FIND_FIRST_OF, FIND_LAST_OF,
+	FIND_FIRST_NOT_OF and FIND_LAST_NOT_OF.
+
+	LET as operator.
+
+	SYMBOL AFTER instruction.
+
+Version 0.5.3
+
+	Bugs in ellipses and arcs of ellipses with high
+	eccentricity, corrected.
+
+	INPUT & LINE INPUT now works in graphics mode.
+
+	Corrected bug synchronized mode not reset when changing mode.
+
+Version 0.5.2
+
+	CIRCLE extended to ellipses.
+
+Version 0.5.1
+
+	Bug in CLS in graphics mode corrected.
+
+	Cleaner circles.
+
+	The syntax of the CIRCLE instruction has been changed and
+	completed for compatibility with Gwbasic.
+
+	Bug DRAW string debug output not cleaned, corrected.
+
+Version 0.5.0
+
+	Speed improvement.
+
+	"PRINT , , 1" now is valid syntax. Same in WRITE.
+
+	Better implementation of FILES.
+
+	XPOS, YPOS, PEEK16 and PEEK32 functions.
+
+	DRAWR, PLOTR, MOVER, POKE16, POKE32, RENUM, CIRCLE, MASK,
+	WINDOW and GRAPHICS instructions.
+
+	Completed the syntax of PLOT, PLOTR, DRAW, DRAWR, MOVE
+	and MOVER with ink and ink mode parameters.
+
+	Adapated some instructions to work with text windows.
+
+	MODE string, when string can be "spectrum" or "cpc2"
+
+	Bug PRINT AT invert arguments, corrected.
+
+	Bug PRINT AT does not always work, corrected.
+
+	Added variant: VAL evaluates expressions (can run more Sinclair
+	ZX family programs). Activable with "POKE SYSVARPTR + 25, 1".
+
+	New command line options -m mode and -d.
+
+	Added variant "Next check relaxed", needed for many ZX-81
+	and Spectrum programas. Activable with "POKE SYSVARPTR + 26, 1".
+
+	Added variant can DIM an array already dimensioned, needed
+	for ZX programs. Activable with "POKE SYVARPTR + 27, 1".
+
+	New sample programs.
+
+	Memory leak in ERASE corrected.
+
+	Bug on negative integer DATA corrected.
+
+Version 0.4.5
+
+	EDIT command. Line editing in AUTO and in prompt.
+
+	Prompt "Ok" instead of "]" (sorry, Apple ]['s nostalgics).
+
+Version 0.4.4
+
+	Bug DATA terminated with comma, corrected.
+
+	Mouse secondary button and button release.
+
+	Special keys support improved.
+
+Version 0.4.3
+
+	Mouse support in graphics mode (keywords XMOUSE and YMOUSE).
+
+	Special keys are recongnized in linux in text mode.
+
+	The return value of the SHELL instruction is saved
+	in a system var.
+
+Version 0.4.2
+
+	Now compiles with Kylix.
+
+	Workarounds for bugs that cause crash on some platforms
+	when a syntax error is generated.
+
+	Bug ON BREAK CONT causes internal error on INPUT.
+
+	Bug AUTO n causes syntax error.
+
+Version 0.4.1
+
+	TRON LINE.
+
+	Channel specification in TRON.
+
+	Doesn't use hash_map in gcc 3.
+
+	Corrected problem in gcc 2.95.2
+
+	Big numbers whitout decimal nor exponent are now handled
+	correctly on all platforms.
+
+Version 0.4.0
+
+	Integer type variables. Integer and real suffixes.
+
+	DEF STR, DEF INT, DEF REAL
+
+	Comments with '
+
+	No keywords in comments.
+
+	MERGE and CHAIN MERGE now try .blc and .bas extensions
+	and work with binary files.
+
+	OSNAME$
+
+	Tabs in graphics mode.
+
+Version 0.3.5
+
+	CHAIN, CHAIN MERGE
+
+	Bug some instructions don't continue processing current line.
+
+Version 0.3.4
+
+	ON BREAK STOP / CONT / GOSUB
+
+	SYNCHRONIZE, PAUSE.
+
+	Bug LOCATE in graphics mode started in 0 instead of 1, corrected.
+
+	Bug PRINT AT doesn't work in graphics mode, corrected.
+
+Version 0.3.3
+
+	Bug scroll & cls in invert mode corrected.
+
+	Bug scroll fills white instead of current paper corrected.
+
+	Bug blank or empty USING corrected.
+
+	Bug INPUT only positive integer coorrected.
+
+	FIX and CINT functions.
+
+	Preliminary support for colors on text mode.
+
+Version 0.3.2
+
+	PAPER, PEN, SHELL, CHDIR, MKDIR and RMDIR instructions.
+
+	Syntax of LINE has changed, now is like Gwbasic.
+
+	Simple implementation of FILES.
+
+	Text output in graphics mode now in colors and with
+	transparent option.
+
+	Error corrections to compile on C++ Builder 6.
+
+	Graphics modes now works on Win 2000 and XP.
+
+Version 0.3.1
+
+	POP, NAME, KILL and FILES instructions (FILES not implemented).
+
+	MIN and MAX functions.
+
+	Corrected bug in Makefile.
+
+	Some changes to avoid errors and warnings on some versions
+	of gcc and C++ Builder.
+
+	Some code cleanup.
+
+	File not found on OPEN for input.

@@ -1,0 +1,83 @@
+	NOTES ABOUT CURRENT VERSION
+
+There are problems using some versions of gcc on some platforms.
+In case Blassic core dumps on exiting or when a program has an
+error, compile it using -O0
+
+The regular expression functions are not supported under windows.
+
+The bidirectional POPEN may or may not work on windows depending
+on the windows version used.
+
+Now configure admits several options: --disable-graphics to compile
+without graphics support and --disable-curses to compile without
+curses nor ncurses. In the last case, CLS, LOCATE and other
+instructions when used in text mode are silently ignored. In the
+former, trying to enter in graphics mode generates an error.
+If curses is enabled, first ncurses is tested, if not available
+curses is used instead. The --disable-ncurses option skips the
+ncurses test and uses always curses.
+
+When configuring for unix/linux, using --without-x has the same
+effect as --disable-graphics. For windows is ignored.
+
+Several scripts to call configure are provided, see the do_conf*
+files.
+
+
+	NOTES ABOUT CROSS-COMPILING BLASSIC
+
+The cross-compiling has been simplified in Blasic 0.10.0, it must now
+automatically use the native compiler to create gencharset. If this
+fails you can manually compile it, or create a dummy, it does not
+need to be executed unless the charset data files are modified.
+
+
+			*	*	*
+
+
+To run the test of dynamic linking of functions do:
+
+	make testdl.so
+
+	./blassic testdl
+
+On windows with Borland C++ Builder build the project testdl and do:
+
+	blassic testdl
+
+There is no other documentation than the testdl.cpp source, sorry.
+
+
+			*	*	*
+
+
+	BASIC /bay'-sic/ n. 
+
+A programming language, originally designed for Dartmouth's experimental
+timesharing system in the early 1960s, which for many years was the leading
+cause of brain damage in proto-hackers. Edsger W. Dijkstra observed in
+"Selected Writings on Computing: A Personal Perspective" that "It is
+practically impossible to teach good programming style to students that have
+had prior exposure to BASIC: as potential programmers they are mentally
+mutilated beyond hope of regeneration." This is another case (like Pascal)
+of the cascading lossage that happens when a language deliberately designed
+as an educational toy gets taken too seriously. A novice can write short
+BASIC programs (on the order of 10-20 lines) very easily; writing anything
+longer (a) is very painful, and (b) encourages bad habits that will make it
+harder to use more powerful languages well. This wouldn't be so bad if
+historical accidents hadn't made BASIC so common on low-end micros in the
+1980s. As it is, it probably ruined tens of thousands of potential wizards.
+
+	"The new hacker's dictionary"
+
+I disagree with this point of view, but...
+
+		*****************************
+		**  You have been warned!  **
+		*****************************
+
+
+(C) 2001-2005 Julián Albo
+
+julian.notfound@gmail.com
