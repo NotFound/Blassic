@@ -1,5 +1,5 @@
 // program.cpp
-// Revision 24-apr-2009
+// Revision 14-mar-2012
 
 #include "program.h"
 
@@ -1211,10 +1211,10 @@ void ProgramImpl::save (const std::string & name) const
 	TRACEFUNC (tr, "ProgramImpl::save");
 
 	std::ofstream os (name.c_str (), std::ios::binary | std::ios::out);
+	if (! os.is_open())
+		throw ErrFileWrite;
 
 	// Blassic signature.
-	if (! os)
-		return;
 	os.write (signature, lsig);
 
 	// Endian mark.
@@ -1228,6 +1228,7 @@ void ProgramImpl::save (const std::string & name) const
 
 	// Program body.
 	os.write ( (char *) program, size);
+	os.close();
 	if (! os)
 		throw ErrFileWrite;
 }

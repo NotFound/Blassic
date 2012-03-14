@@ -1,5 +1,5 @@
 // runner.cpp
-// Revision 24-apr-2009
+// Revision 14-mar-2012
 
 #include "runner.h"
 
@@ -2043,7 +2043,7 @@ void welcome (BlFile & f)
 		version::Minor << '.' <<
 		version::Release;
 	f.endline ();
-	f << "(C) 2001-2009 Julian Albo";
+	f << "(C) 2001-2012 Julian Albo";
 	f.endline ();
 	f.endline ();
 }

@@ -1,3 +1,11 @@
+Version 0.10.3
+
+	Fix save silently failing if the file can't be open.
+
+Version 0.10.2
+
+	Minor fixes.
+
 Version 0.10.1
 
 	Added msx option and charset.
